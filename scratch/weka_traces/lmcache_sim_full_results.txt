@@ -1,0 +1,141 @@
+===== FULL CORPUS (233 traces, 60,996 events), DSv4 MLA@fp8 2.14MiB/chunk =====
+[18:09:46] sweep sequential full ...
+
+Sweeping 16 capacity values (1.00 – 256.00 GiB), chunk_size = 64 tokens, model = all models
+
+    Capacity (GiB)    Hit rate
+--------------------------------
+             1.000      0.25%
+             1.447      1.24%
+             2.095      3.11%
+             3.031      7.14%
+             4.387     14.01%
+             6.350     24.95%
+             9.190     39.86%
+            13.300     55.81%
+            19.248     74.59%
+            27.858     93.12%
+            40.317     98.23%
+            58.350     98.33%
+            84.449     98.35%
+           122.220     98.35%
+           176.885     98.36%
+           256.000     98.36%
+
+Plot saved to '/Users/ruizhang/InferenceX/scratch/weka_traces/figures/sweep_sequential_full.png'
+[18:18:37] sweep interleave CONC=32 full ...
+
+Sweeping 16 capacity values (8.00 – 4096.00 GiB), chunk_size = 64 tokens, model = all models
+
+    Capacity (GiB)    Hit rate
+--------------------------------
+             8.000      1.38%
+            12.126      1.75%
+            18.379      1.79%
+            27.858      3.49%
+            42.224      8.83%
+            64.000     16.68%
+            97.006     30.48%
+           147.033     37.29%
+           222.861     61.29%
+           337.794     97.90%
+           512.000     98.18%
+           776.047     98.30%
+          1176.267     98.34%
+          1782.888     98.35%
+          2702.352     98.36%
+          4096.000     98.36%
+
+Plot saved to '/Users/ruizhang/InferenceX/scratch/weka_traces/figures/sweep_interleave32_full.png'
+[18:29:01] simulate interleave CONC=32 full @ 64 GiB (7-panel) ...
+
+Simulation parameters:
+  Cache capacity     : 64.00 GiB (68,719,476,736 bytes)
+  KV bytes/chunk     : 2,248,704
+  Chunk size         : 64 tokens
+
+============================================================
+Aggregate
+============================================================
+  Requests processed  : 60,996
+  Total tokens        : 12,631,145,216
+  Hit tokens          : 2,106,382,016
+  Miss tokens         : 10,524,763,200
+  Token hit rate      : 16.68%
+  Cache capacity      : 64.00 GiB  (30,559 chunks × 2,248,704 bytes/chunk)
+  Cache occupancy     : 30,559 / 30,559 chunks
+
+============================================================
+Stat 1 — Per-request token hit rate distribution
+============================================================
+  Requests with 0% hit rate   : 49,958 (81.9%)
+  Requests with 100% hit rate : 89 (0.1%)
+  Mean                        : 17.26%
+  p25                         : 0.00%
+  p50                         : 0.00%
+  p75                         : 0.00%
+  p90                         : 99.20%
+  p99                         : 99.93%
+
+============================================================
+Stat 2 — Hit prefix length per request (chunks)
+============================================================
+  Mean               : 539.6
+  p25                : 0
+  p50                : 0
+  p75                : 0
+  p90                : 1935
+  p99                : 8847
+
+============================================================
+Stat 3 — Chunk reuse count distribution
+============================================================
+  Unique chunks hit at least once : 625,347
+  Mean reuse count                : 52.6
+  Max reuse count                 : 1,895
+  p25                             : 4
+  p50                             : 14
+  p75                             : 56
+  p90                             : 139
+  p99                             : 512
+
+============================================================
+Stat 4 — Rolling (cumulative) token hit rate over time
+============================================================
+  After request  6,099 : 0.79%
+  After request 15,249 : 0.23%
+  After request 30,498 : 0.11%
+  After request 45,747 : 0.59%
+  After request 60,996 : 16.68%
+
+============================================================
+Stat 5 — Evictions
+============================================================
+  Total evictions    : 164,418,866
+
+============================================================
+Stat 6 — Global span distribution (chunks between last store and hit)
+============================================================
+  Total hit chunks   : 32,912,219
+  Mean span          : 22167.8
+  Max span           : 2,077,429
+  p25                : 14744
+  p50                : 20004
+  p75                : 24899
+  p90                : 29139
+  p99                : 91615
+
+============================================================
+Stat 7 — Cache position at hit (0 = MRU, max = LRU)
+============================================================
+  Mean position      : 16069.6
+  Max position       : 30,557
+  p25                : 11844
+  p50                : 16992
+  p75                : 21335
+  p90                : 25353
+  p99                : 29363
+============================================================
+
+Stats plot saved to '/Users/ruizhang/InferenceX/scratch/weka_traces/figures/fig6_simulate_int32_64gib_full.png'
+[18:35:51] DONE
